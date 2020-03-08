@@ -379,6 +379,7 @@ view=new-view \
 	 print.toggle-show-page-breaks \
 	 toggle-statusbar \
 	 toggle-gutter \
+	 toggle-scroll-bars \
 	 toggle-buffer-switcher \
 	 - \
 	 %scrolling \
