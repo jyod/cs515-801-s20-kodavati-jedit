@@ -6744,4 +6744,10 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 			return painter;
 		}
 	}
+
+	public void toggleScroll(boolean toggle)
+	{
+		vertical.setVisible(toggle);
+		horizontal.setVisible(toggle);
+	}
 }

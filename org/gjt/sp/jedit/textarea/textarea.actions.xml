@@ -679,6 +679,17 @@
 	</IS_SELECTED>
 </ACTION>
 
+<ACTION NAME="toggle-scroll-bars">
+	<CODE>
+		boolean enable = jEdit.getBooleanProperty("view.textarea.scrollbars.enabled");
+		jEdit.setBooleanProperty("view.textarea.scrollbars.enabled", !enable);
+		textArea.toggleScroll(!enable);
+	</CODE>
+	<IS_SELECTED>
+		return jEdit.getBooleanProperty("view.textarea.scrollbars.enabled");
+	</IS_SELECTED>
+</ACTION>
+
 <ACTION NAME="toggle-multi-select">
 	<CODE>
 		textArea.toggleMultipleSelectionEnabled();
