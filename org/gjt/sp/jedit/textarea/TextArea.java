@@ -4368,12 +4368,12 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 		buffer.endCompoundEdit();
 	} //}}}
 
-	//{{{ toUpperCase() method
+	//{{{ toCase() method
 	/**
-	 * Converts the selected text to upper case.
+	 * Converts the selected text to upper or lower case.
 	 * @since jEdit 2.7pre2
 	 */
-	public void toUpperCase()
+	public void toCase(String upperOrLower)
 	{
 		if(!buffer.isEditable())
 		{
@@ -4400,46 +4400,12 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 		buffer.beginCompoundEdit();
 
 		for (Selection s : selection)
-			setSelectedText(s, getSelectedText(s).toUpperCase());
-
-		buffer.endCompoundEdit();
-		if (caret != -1)
-			setCaretPosition(caret);
-	} //}}}
-
-	//{{{ toLowerCase() method
-	/**
-	 * Converts the selected text to lower case.
-	 * @since jEdit 2.7pre2
-	 */
-	public void toLowerCase()
-	{
-		if(!buffer.isEditable())
 		{
-			javax.swing.UIManager.getLookAndFeel().provideErrorFeedback(null); 
-			return;
+			if (upperOrLower == "UPPER")
+				setSelectedText(s, getSelectedText(s).toUpperCase());
+			else if (upperOrLower == "LOWER")
+				setSelectedText(s, getSelectedText(s).toLowerCase());
 		}
-
-		Selection[] selection = getSelection();
-		int caret = -1;
-		if (selection.length == 0)
-		{
-			caret = getCaretPosition();
-			selectWord();
-			selection = getSelection();
-		}
-		if (selection.length == 0)
-		{
-			if (caret != -1)
-				setCaretPosition(caret);
-			javax.swing.UIManager.getLookAndFeel().provideErrorFeedback(null); 
-			return;
-		}
-
-		buffer.beginCompoundEdit();
-
-		for (Selection s : selection)
-			setSelectedText(s, getSelectedText(s).toLowerCase());
 
 		buffer.endCompoundEdit();
 		if (caret != -1)
